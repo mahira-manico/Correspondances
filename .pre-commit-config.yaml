@@ -1,0 +1,7 @@
+# Hook local : bloque un commit qui contient un secret, avant même le push
+# Installation (une fois par poste) : pip install pre-commit, puis pre-commit install
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.28.0
+    hooks:
+      - id: gitleaks
