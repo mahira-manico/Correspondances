@@ -1,0 +1,10 @@
+# Fins de ligne normalisées (LF dans le dépôt), quel que soit le système de chacun
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Fichiers binaires
+*.png binary
+*.jpg binary
+*.pdf binary
+*.jar binary
