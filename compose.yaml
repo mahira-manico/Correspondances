@@ -1,8 +1,4 @@
-# PostgreSQL 16 pour le développement local.
-# Démarrage : docker compose up -d
-# Exposé sur le port 15432 : ni le 5432 d'un PostgreSQL déjà installé sur le poste,
-# ni une plage réservée par Windows/Hyper-V (5433-5532 l'est souvent).
-# Les valeurs par défaut peuvent être surchargées par un fichier .env (non versionné, lu par Docker Compose uniquement).
+# Port 15432 avoids a locally installed PostgreSQL (5432) and Windows reserved port ranges (often 5433-5532).
 services:
   postgres:
     image: postgres:16
