@@ -2,7 +2,7 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-# Secrets et configuration locale
+# Secrets and local configuration
 .env
 *.local.properties
 
@@ -26,7 +26,7 @@ out/
 .sts4-cache
 bin/
 
-# Système
+# OS
 .DS_Store
 Thumbs.db
 
