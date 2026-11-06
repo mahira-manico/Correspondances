@@ -7,8 +7,8 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 /**
- * Lance un PostgreSQL 16 jetable pour les tests (Docker requis).
- * Spring Boot y branche automatiquement la datasource et Flyway.
+ * Disposable PostgreSQL 16 container for tests (requires Docker).
+ * Spring Boot wires the datasource and Flyway to it automatically.
  */
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {

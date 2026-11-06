@@ -1,22 +1,18 @@
-# PostgreSQL 16 pour le développement local.
-# Démarrage : docker compose up -d
-# Exposé sur le port 15432 : ni le 5432 d'un PostgreSQL déjà installé sur le poste,
-# ni une plage réservée par Windows/Hyper-V (5433-5532 l'est souvent).
-# Les valeurs par défaut peuvent être surchargées par un fichier .env (non versionné, lu par Docker Compose uniquement).
+# Port 15432 avoids a locally installed PostgreSQL (5432) and Windows reserved port ranges (often 5433-5532).
 services:
   postgres:
     image: postgres:16
     container_name: correspondances-db
     environment:
-      POSTGRES_DB: ${DB_NAME:-correspondances}
-      POSTGRES_USER: ${DB_USER:-correspondances}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-correspondances}
+      POSTGRES_DB: ${CORRESPONDANCES_DB_NAME:-correspondances}
+      POSTGRES_USER: ${CORRESPONDANCES_DB_USER:-correspondances}
+      POSTGRES_PASSWORD: ${CORRESPONDANCES_DB_PASSWORD:-correspondances}
     ports:
-      - "${DB_PORT:-15432}:5432"
+      - "${CORRESPONDANCES_DB_PORT:-15432}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-correspondances} -d ${DB_NAME:-correspondances}"]
+      test: ["CMD-SHELL", "pg_isready -U ${CORRESPONDANCES_DB_USER:-correspondances} -d ${CORRESPONDANCES_DB_NAME:-correspondances}"]
       interval: 5s
       timeout: 5s
       retries: 10

@@ -14,11 +14,11 @@
     <artifactId>correspondances</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>correspondances</name>
-    <description>Billetterie ferroviaire régionale</description>
+    <description>Regional railway ticketing</description>
 
     <properties>
         <java.version>21</java.version>
-        <!-- Version compatible avec Docker 29+ (la 1.21.3 fournie par Spring Boot 3.5.6 ne l'est pas) -->
+        <!-- Spring Boot 3.5.6 ships Testcontainers 1.21.3, which does not work with Docker 29+ -->
         <testcontainers.version>1.21.4</testcontainers.version>
     </properties>
 

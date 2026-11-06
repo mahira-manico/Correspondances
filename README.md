@@ -17,7 +17,7 @@ La conception est décrite dans [docs/modelisation.md](docs/modelisation.md).
 ## Prérequis
 
 - JDK 21
-- Maven 3.9+ (ou celui intégré à IntelliJ IDEA)
+- Maven : rien à installer, le wrapper `./mvnw` (ou `mvnw.cmd` sous Windows) télécharge Maven 3.9.16
 - Docker (base locale et tests)
 
 ## Lancer le projet
@@ -30,20 +30,22 @@ La conception est décrite dans [docs/modelisation.md](docs/modelisation.md).
 
    Base `correspondances`, utilisateur `correspondances`, port **`15432`**. Ce port évite le 5432 d'un PostgreSQL déjà installé sur le poste, ainsi que les plages réservées par Windows (5433-5532 l'est souvent ; vérifier avec `netsh interface ipv4 show excludedportrange protocol=tcp`).
 
-   Pour changer ces valeurs : copier `.env.example` en `.env` (lu par Docker Compose) **et** définir les mêmes variables d'environnement (`DB_PORT`, `DB_USER`…) avant de lancer l'application, car Spring Boot ne lit pas `.env`.
+   Pour changer ces valeurs : copier `.env.example` en `.env` (lu par Docker Compose) **et** définir les mêmes variables d'environnement (`CORRESPONDANCES_DB_PORT`, `CORRESPONDANCES_DB_USER`…) avant de lancer l'application, car Spring Boot ne lit pas `.env`.
 
 2. Lancer l'application (Flyway applique les migrations au démarrage) :
 
    ```bash
-   mvn spring-boot:run
+   ./mvnw spring-boot:run
    ```
+
+   L'application écoute sur http://localhost:18080 (et non 8080, souvent réservé par Windows). Pour changer de port : variable d'environnement `CORRESPONDANCES_SERVER_PORT`.
 
 3. Arrêter la base : `docker compose down` (ajouter `-v` pour effacer aussi les données).
 
 ## Tests
 
 ```bash
-mvn verify
+./mvnw verify
 ```
 
 Les tests démarrent leur propre PostgreSQL 16 jetable avec Testcontainers : Docker doit être lancé, la base de `docker compose` n'est pas utilisée.
@@ -60,7 +62,7 @@ Chaque pull request vers `main` déclenche [.github/workflows/ci.yml](.github/wo
 |---|---|
 | Gitleaks | Cherche des secrets dans tout l'historique |
 | Build | Compile et empaquette, sans tests |
-| Tests | Lancé **seulement si le build réussit** ; exécute `mvn verify` |
+| Tests | Lancé **seulement si le build réussit** ; exécute `./mvnw verify` |
 
 Une PR ne peut être fusionnée que si les trois jobs sont verts.
 
