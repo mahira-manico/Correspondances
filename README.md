@@ -30,7 +30,7 @@ La conception est décrite dans [docs/modelisation.md](docs/modelisation.md).
 
    Base `correspondances`, utilisateur `correspondances`, port **`15432`**. Ce port évite le 5432 d'un PostgreSQL déjà installé sur le poste, ainsi que les plages réservées par Windows (5433-5532 l'est souvent ; vérifier avec `netsh interface ipv4 show excludedportrange protocol=tcp`).
 
-   Pour changer ces valeurs : copier `.env.example` en `.env` (lu par Docker Compose) **et** définir les mêmes variables d'environnement (`DB_PORT`, `DB_USER`…) avant de lancer l'application, car Spring Boot ne lit pas `.env`.
+   Pour changer ces valeurs : copier `.env.example` en `.env` (lu par Docker Compose) **et** définir les mêmes variables d'environnement (`CORRESPONDANCES_DB_PORT`, `CORRESPONDANCES_DB_USER`…) avant de lancer l'application, car Spring Boot ne lit pas `.env`.
 
 2. Lancer l'application (Flyway applique les migrations au démarrage) :
 
@@ -38,7 +38,7 @@ La conception est décrite dans [docs/modelisation.md](docs/modelisation.md).
    ./mvnw spring-boot:run
    ```
 
-   L'application écoute sur http://localhost:18080 (et non 8080, souvent réservé par Windows). Pour changer de port : variable d'environnement `SERVER_PORT`.
+   L'application écoute sur http://localhost:18080 (et non 8080, souvent réservé par Windows). Pour changer de port : variable d'environnement `CORRESPONDANCES_SERVER_PORT`.
 
 3. Arrêter la base : `docker compose down` (ajouter `-v` pour effacer aussi les données).
 
