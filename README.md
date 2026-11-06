@@ -38,6 +38,8 @@ La conception est décrite dans [docs/modelisation.md](docs/modelisation.md).
    ./mvnw spring-boot:run
    ```
 
+   L'application écoute sur http://localhost:18080 (et non 8080, souvent réservé par Windows). Pour changer de port : variable d'environnement `SERVER_PORT`.
+
 3. Arrêter la base : `docker compose down` (ajouter `-v` pour effacer aussi les données).
 
 ## Tests
