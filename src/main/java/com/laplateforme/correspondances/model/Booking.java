@@ -15,8 +15,8 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="station_id")
-    private Long StationId;
+    @Column(name="booking_id")
+    private Long bookingId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="passenger_id", nullable = false)
@@ -37,8 +37,8 @@ public class Booking {
         this.totalPrice=totalPrice;
     }
 
-    public Long getStationId() {
-        return StationId;
+    public Long getBookingId() {
+        return bookingId;
     }
 
     public Passenger getPassenger() {

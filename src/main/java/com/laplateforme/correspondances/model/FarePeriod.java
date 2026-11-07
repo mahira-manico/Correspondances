@@ -8,7 +8,7 @@ public class FarePeriod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="fare_period_id")
-    private Long FarePeriodId;
+    private Long farePeriodId;
 
     @Column(name="code", length = 20, nullable = false, unique = true)
     private String code;
@@ -24,7 +24,7 @@ public class FarePeriod {
     }
 
     public Long getFarePeriodId() {
-        return FarePeriodId;
+        return farePeriodId;
     }
 
     public String getCode() {
