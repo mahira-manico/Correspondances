@@ -21,7 +21,7 @@ public class FarePeriod {
 
     public FarePeriod(String code, String label){
         this.code=code;
-        tihs.label=label;
+        this.label=label;
     }
 
     public String getCode() {
