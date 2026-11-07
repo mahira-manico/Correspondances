@@ -1,4 +1,4 @@
-package com.laplateforme.correspondances.entities;
+package com.laplateforme.correspondances.model;
 
 public enum ExceptionType {
     ADDED,

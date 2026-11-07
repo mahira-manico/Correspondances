@@ -1,10 +1,9 @@
-package com.laplateforme.correspondances.entities;
+package com.laplateforme.correspondances.model;
 
 import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name="passenger")

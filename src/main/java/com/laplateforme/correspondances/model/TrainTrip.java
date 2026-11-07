@@ -1,10 +1,9 @@
-package com.laplateforme.correspondances.entities;
+package com.laplateforme.correspondances.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedBy;
 
 @Entity
 @Table(name = "train_trip")
