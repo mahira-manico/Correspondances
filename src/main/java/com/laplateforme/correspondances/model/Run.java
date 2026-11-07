@@ -12,13 +12,14 @@ import java.time.LocalDate;
         @UniqueConstraint(
                 name = "uq_trip_run_date",
                 columnNames = {
-                        "trip_id, run_date"}
+                        "trip_id", "run_date"}
         )})
 public class Run {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="run_id")
+    private Long runId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trip_id", nullable = false)
@@ -33,6 +34,10 @@ public class Run {
     public Run(TrainTrip trainTrip, LocalDate runDate){
         this.trainTrip=trainTrip;
         this.runDate=runDate;
+    }
+
+    public Long getRunId() {
+        return runId;
     }
 
     public TrainTrip getTrainTrip() {

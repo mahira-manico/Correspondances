@@ -13,12 +13,12 @@ import java.math.BigDecimal;
         @UniqueConstraint(
                 name = "uq_line_station",
                 columnNames = {
-                        "line_id, station_id"}
+                        "line_id", "station_id"}
         ),
         @UniqueConstraint(
                 name = "uq_line_stop_order",
                 columnNames = {
-                        "line_id, stop_order"}
+                        "line_id", "stop_order"}
         )}
 )
 @Check(constraints = "stop_order>0")
@@ -28,7 +28,8 @@ public class LineStation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="line_station_id")
+    private Long lineStationId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "line_id", nullable = false)
@@ -53,6 +54,10 @@ public class LineStation {
         this.station=station;
         this.stopOrder=stopOrder;
         this.distanceFromOrigin=distanceFromOrigin;
+    }
+
+    public Long getLineStationId() {
+        return lineStationId;
     }
 
     public Line getLine() {

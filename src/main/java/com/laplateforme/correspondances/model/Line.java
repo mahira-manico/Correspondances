@@ -10,7 +10,8 @@ public class Line {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "line_id")
+    private Long lineId;
 
     @Column(name="code", nullable = false, unique = true, length = 10)
     private String code;
@@ -23,6 +24,10 @@ public class Line {
     public Line(String code, String name){
         this.code=code;
         this.name=name;
+    }
+
+    public Long getLineId() {
+        return lineId;
     }
 
     public String getCode() {

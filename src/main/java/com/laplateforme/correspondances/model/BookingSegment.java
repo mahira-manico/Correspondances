@@ -13,7 +13,7 @@ import java.math.BigDecimal;
         @UniqueConstraint(
                 name = "uq_segment_run_seat",
                 columnNames = {
-                        "booking_segment_id, run_id, seat_id"})
+                        "booking_segment_id", "run_id, seat_id"})
 })
 @Check(constraints = "price>=0")
 @Check(constraints = "departure_station_id<>arrival_station_id")
@@ -21,7 +21,8 @@ public class BookingSegment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="booking_segment_id")
+    private Long bookingSegmentId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "booking_id", nullable = false)
@@ -56,7 +57,21 @@ public class BookingSegment {
     @Column(name = "price", nullable = false, precision = 8, scale = 2)
     private BigDecimal price;
 
-    protected BookingSegment() {}
+    protected BookingSegment(){}
+
+    public BookingSegment(Booking booking, Run run, Seat seat, Fare fare, Station departureStation, Station arrivalStation, BigDecimal price) {
+        this.booking=booking;
+        this.run=run;
+        this.seat=seat;
+        this.fare=fare;
+        this.departureStation=departureStation;
+        this.arrivalStation=arrivalStation;
+        this.price=price;
+    }
+
+    public Long getBookingSegmentId() {
+        return bookingSegmentId;
+    }
 
     public Booking getBooking() {
         return booking;

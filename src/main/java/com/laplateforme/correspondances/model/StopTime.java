@@ -13,11 +13,11 @@ import java.time.LocalTime;
         @UniqueConstraint(
                 name = "uq_trip_station",
                 columnNames = {
-                        "trip_id, station_id"}),
+                        "trip_id", "station_id"}),
         @UniqueConstraint(
                 name = "uq_trip_sequence",
                 columnNames = {
-                        "trip_id,stop_sequence"})
+                        "trip_id","stop_sequence"})
 })
 @Check(constraints = "stop_sequence>0")
 @Check(constraints = "arrival_time<=departure_time")
@@ -25,7 +25,8 @@ public class StopTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="stop_time_id")
+    private Long stopTimeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trip_id", nullable = false)
@@ -54,6 +55,10 @@ public class StopTime {
         this.stopSequence=stopSequence;
         this.arrivalTime=arrivalTime;
         this.departureTime=departureTime;
+    }
+
+    public Long getStopTimeId() {
+        return stopTimeId;
     }
 
     public TrainTrip getTrainTrip() {

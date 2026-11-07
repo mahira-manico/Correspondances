@@ -13,7 +13,7 @@ import java.time.LocalDate;
                 @UniqueConstraint(
                         name = "uq_exception_calendar_date",
                         columnNames = {
-                                "calendar_id, exception_date"}
+                                "calendar_id", "exception_date"}
                         )
         })
 @Check(constraints = "exception_type IN ('ADDED', 'REMOVED')")
@@ -21,7 +21,8 @@ public class CalendarException {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="calendar_exception_id")
+    private Long CalendarExceptionId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "calendar_id", nullable = false)
@@ -34,5 +35,39 @@ public class CalendarException {
     @Column(name="exception_type", length = 7, nullable = false)
     private Exception exceptionType;
 
+    protected CalendarException(){}
 
+    public CalendarException(Calendar calendar, LocalDate exceptionDate, Exception exceptionType) {
+        this.calendar = calendar;
+        this.exceptionDate = exceptionDate;
+        this.exceptionType = exceptionType;
+    }
+
+    public Long getCalendarExceptionId() {
+        return CalendarExceptionId;
+    }
+
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
+    }
+
+    public Exception getExceptionType() {
+        return exceptionType;
+    }
+
+    public void setExceptionType(Exception exceptionType) {
+        this.exceptionType = exceptionType;
+    }
+
+    public LocalDate getExceptionDate() {
+        return exceptionDate;
+    }
+
+    public void setExceptionDate(LocalDate exceptionDate) {
+        this.exceptionDate = exceptionDate;
+    }
 }

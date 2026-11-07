@@ -11,14 +11,15 @@ import org.springframework.data.annotation.Id;
         @UniqueConstraint(
                 name = "uq_train_carriage",
                 columnNames = {
-                        "train_id, carriage_number"}
+                        "train_id", "carriage_number"}
         )})
 @Check(constraints = "carriage_number>0")
 public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="seat_id")
+    private Long seatId;
 
     @ManyToOne
     @JoinColumn(name = "carriage_id", nullable = false)
@@ -39,6 +40,10 @@ public class Seat {
         this.carriage=carriage;
         this.travelClass=travelClass;
         this.seatNumber=seatNumber;
+    }
+
+    public Long getSeatId() {
+        return seatId;
     }
 
     public Carriage getCarriage() {

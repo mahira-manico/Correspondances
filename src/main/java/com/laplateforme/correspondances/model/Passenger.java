@@ -11,7 +11,8 @@ public class Passenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="passenger_id")
+    private Long passengerId;
 
     @Column(name="last_name", length = 100, nullable = false)
     private String lastName;
@@ -32,6 +33,10 @@ public class Passenger {
         this.firstName=firstName;
         this.email=email;
         this.birthDate=birthDate;
+    }
+
+    public Long getPassengerId() {
+        return passengerId;
     }
 
     public String getLastName() {
