@@ -1,8 +1,6 @@
 package com.laplateforme.correspondances.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
-
 import java.time.LocalDate;
 
 @Entity

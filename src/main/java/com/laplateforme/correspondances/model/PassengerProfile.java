@@ -1,7 +1,6 @@
 package com.laplateforme.correspondances.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name="passenger_profile")

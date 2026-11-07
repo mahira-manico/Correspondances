@@ -1,8 +1,6 @@
 package com.laplateforme.correspondances.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
-
 @Entity
 @Table(name="fare_period")
 public class FarePeriod {

@@ -2,8 +2,6 @@ package com.laplateforme.correspondances.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Check;
-import org.springframework.data.annotation.Id;
-
 import java.time.LocalDate;
 
 @Entity

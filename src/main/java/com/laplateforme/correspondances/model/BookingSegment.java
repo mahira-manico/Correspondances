@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.Check;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.Id;
-
 import java.math.BigDecimal;
 
 @Entity
