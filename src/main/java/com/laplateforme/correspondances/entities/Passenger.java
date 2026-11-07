@@ -3,6 +3,7 @@ package com.laplateforme.correspondances.entities;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -23,11 +24,11 @@ public class Passenger {
     private String email;
 
     @Column(name="birth_date")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     protected Passenger(){}
 
-    public Passenger(String lastName, String firstName, String email, Date birthDate){
+    public Passenger(String lastName, String firstName, String email, LocalDate birthDate){
         this.lastName=lastName;
         this.firstName=firstName;
         this.email=email;
@@ -58,11 +59,11 @@ public class Passenger {
         this.email = email;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }
