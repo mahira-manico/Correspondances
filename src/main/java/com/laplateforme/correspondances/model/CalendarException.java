@@ -3,6 +3,7 @@ package com.laplateforme.correspondances.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Check;
 import java.time.LocalDate;
+import com.laplateforme.correspondances.model.ExceptionType;
 
 @Entity
 @Table(
@@ -31,11 +32,11 @@ public class CalendarException {
 
     @Enumerated(EnumType.STRING)
     @Column(name="exception_type", length = 7, nullable = false)
-    private Exception exceptionType;
+    private ExceptionType exceptionType;
 
     protected CalendarException(){}
 
-    public CalendarException(Calendar calendar, LocalDate exceptionDate, Exception exceptionType) {
+    public CalendarException(Calendar calendar, LocalDate exceptionDate, ExceptionType exceptionType) {
         this.calendar = calendar;
         this.exceptionDate = exceptionDate;
         this.exceptionType = exceptionType;
@@ -53,11 +54,11 @@ public class CalendarException {
         this.calendar = calendar;
     }
 
-    public Exception getExceptionType() {
+    public ExceptionType getExceptionType() {
         return exceptionType;
     }
 
-    public void setExceptionType(Exception exceptionType) {
+    public void setExceptionType(ExceptionType exceptionType) {
         this.exceptionType = exceptionType;
     }
 
