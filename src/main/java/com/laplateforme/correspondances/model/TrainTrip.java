@@ -10,8 +10,8 @@ public class TrainTrip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="train_trip_id")
-    private Long trainTripId;
+    @Column(name="trip_id")
+    private Long tripId;
 
     @Column(name="trip_number", nullable = false, unique = true, length = 10)
     private String tripNumber;
@@ -40,8 +40,8 @@ public class TrainTrip {
         this.train=train;
     }
 
-    public Long getTrainTripId() {
-        return trainTripId;
+    public Long getTripId() {
+        return tripId;
     }
 
     public String getTripNumber() {
