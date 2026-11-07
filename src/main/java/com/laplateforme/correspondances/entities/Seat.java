@@ -2,6 +2,8 @@ package com.laplateforme.correspondances.entities;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Check;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.Id;
 
 @Entity
@@ -20,10 +22,12 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name = "carriage_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Carriage carriage;
 
     @ManyToOne
     @JoinColumn(name="travel_class_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.RESTRICT)
     private TravelClass travelClass;
 
     @Column(name = "seat_number", nullable = false)
