@@ -9,7 +9,7 @@ public class PassengerProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="passenger_profile_id")
-    private Long passengerProfileId;
+    private Short passengerProfileId;
 
     @Column(name="code", length = 20, nullable = false, unique = true)
     private String code;
@@ -24,7 +24,7 @@ public class PassengerProfile {
         this.label=label;
     }
 
-    public Long getPassengerProfileId() {
+    public Short getPassengerProfileId() {
         return passengerProfileId;
     }
 
