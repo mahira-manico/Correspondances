@@ -2,8 +2,6 @@ package com.laplateforme.correspondances.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.Check;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
@@ -15,12 +13,11 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="station_id")
-    private Long StationId;
+    @Column(name="booking_id")
+    private Long bookingId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="passenger_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Passenger passenger;
 
     @Column(name="booked_at", nullable = false)
@@ -37,8 +34,8 @@ public class Booking {
         this.totalPrice=totalPrice;
     }
 
-    public Long getStationId() {
-        return StationId;
+    public Long getBookingId() {
+        return bookingId;
     }
 
     public Passenger getPassenger() {
