@@ -12,7 +12,7 @@ public class Calendar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "calendar_id")
-    private Long calendarId;
+    private Integer calendarId;
 
     @Column(name="code", length = 20, nullable = false, unique = true)
     private String code;
@@ -63,7 +63,7 @@ public class Calendar {
         this.validTo=validTo;
     }
 
-    public Long getCalendarId() {
+    public Integer getCalendarId() {
         return calendarId;
     }
 
