@@ -8,40 +8,40 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name="seat", uniqueConstraints = {
         @UniqueConstraint(
-                name = "uq_train_carriage",
+                name = "uq_carriage_seat",
                 columnNames = {
-                        "train_id", "carriage_number"}
+                        "carriage_id", "seat_number"}
         )})
-@Check(constraints = "carriage_number>0")
+@Check(constraints = "seat_number>0")
 public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="seat_id")
-    private Long seatId;
+    private Integer seatId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carriage_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Carriage carriage;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="travel_class_id", nullable = false)
     @OnDelete(action = OnDeleteAction.RESTRICT)
     private TravelClass travelClass;
 
     @Column(name = "seat_number", nullable = false)
-    private Integer seatNumber;
+    private Short seatNumber;
 
     protected Seat(){}
 
-    public Seat(Carriage carriage, TravelClass travelClass, Integer seatNumber){
+    public Seat(Carriage carriage, TravelClass travelClass, Short seatNumber){
         this.carriage=carriage;
         this.travelClass=travelClass;
         this.seatNumber=seatNumber;
     }
 
-    public Long getSeatId() {
+    public Integer getSeatId() {
         return seatId;
     }
 
@@ -61,11 +61,11 @@ public class Seat {
         this.travelClass = travelClass;
     }
 
-    public Integer getSeatNumber() {
+    public Short getSeatNumber() {
         return seatNumber;
     }
 
-    public void setSeatNumber(Integer seatNumber) {
+    public void setSeatNumber(Short seatNumber) {
         this.seatNumber = seatNumber;
     }
 }
