@@ -8,7 +8,7 @@ public class Line {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "line_id")
-    private Long lineId;
+    private Integer lineId;
 
     @Column(name="code", nullable = false, unique = true, length = 10)
     private String code;
@@ -23,7 +23,7 @@ public class Line {
         this.name=name;
     }
 
-    public Long getLineId() {
+    public Integer getLineId() {
         return lineId;
     }
 
