@@ -9,26 +9,26 @@ public class Train {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="train_id")
-    private Long trainId;
+    private Integer trainId;
 
     @Column(name="train_number", length = 10, nullable = false, unique = true)
-    private String train_number;
+    private String trainNumber;
 
     protected Train(){}
 
-    public Train(String train_number){
-        this.train_number=train_number;
+    public Train(String trainNumber){
+        this.trainNumber=trainNumber;
     }
 
-    public Long getTrainId() {
+    public Integer getTrainId() {
         return trainId;
     }
 
-    public String getTrain_number() {
-        return train_number;
+    public String getTrainNumber() {
+        return trainNumber;
     }
 
-    public void setTrain_number(String train_number) {
-        this.train_number = train_number;
+    public void setTrainNumber(String trainNumber) {
+        this.trainNumber = trainNumber;
     }
 }
