@@ -9,7 +9,7 @@ public class Station {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="station_id")
-    private Long stationId;
+    private Integer stationId;
 
     @Column(name = "code", nullable = false, unique = true,length = 10)
     private String code;
@@ -28,7 +28,7 @@ public class Station {
         this.city=city;
     }
 
-    public Long getStationId() {
+    public Integer getStationId() {
         return stationId;
     }
 
