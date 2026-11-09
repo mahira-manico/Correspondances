@@ -46,6 +46,15 @@ public class Fare {
 
     protected Fare() {}
 
+    public Fare(TravelClass travelClass, FarePeriod farePeriod, PassengerProfile passengerProfile,
+                BigDecimal basePrice, BigDecimal pricePerKm) {
+        this.travelClass = travelClass;
+        this.farePeriod = farePeriod;
+        this.passengerProfile = passengerProfile;
+        this.basePrice = basePrice;
+        this.pricePerKm = pricePerKm;
+    }
+
     public Integer getFareId() {
         return fareId;
     }
