@@ -9,7 +9,7 @@ public class TravelClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="travel_class_id")
-    private Long travelClassId;
+    private Short travelClassId;
 
     @Column(name="code", length = 10, nullable = false, unique = true)
     private String code;
@@ -24,7 +24,7 @@ public class TravelClass {
         this.label=label;
     }
 
-    public Long getTravelClassId() {
+    public Short getTravelClassId() {
         return travelClassId;
     }
 
