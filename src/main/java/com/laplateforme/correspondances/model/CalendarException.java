@@ -3,7 +3,6 @@ package com.laplateforme.correspondances.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Check;
 import java.time.LocalDate;
-import com.laplateforme.correspondances.model.ExceptionType;
 
 @Entity
 @Table(
@@ -20,8 +19,8 @@ public class CalendarException {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="calendar_exception_id")
-    private Long CalendarExceptionId;
+    @Column(name="exception_id")
+    private Integer exceptionId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "calendar_id", nullable = false)
@@ -42,8 +41,8 @@ public class CalendarException {
         this.exceptionType = exceptionType;
     }
 
-    public Long getCalendarExceptionId() {
-        return CalendarExceptionId;
+    public Integer getExceptionId() {
+        return exceptionId;
     }
 
     public Calendar getCalendar() {
