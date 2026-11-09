@@ -11,7 +11,7 @@ import java.math.BigDecimal;
         @UniqueConstraint(
                 name = "uq_segment_run_seat",
                 columnNames = {
-                        "booking_segment_id", "run_id, seat_id"})
+                        "booking_segment_id", "run_id", "seat_id"})
 })
 @Check(constraints = "price>=0")
 @Check(constraints = "departure_station_id<>arrival_station_id")
@@ -117,5 +117,13 @@ public class BookingSegment {
 
     public void setArrivalStation(Station arrivalStation) {
         this.arrivalStation = arrivalStation;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }
