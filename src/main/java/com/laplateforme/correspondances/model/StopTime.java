@@ -24,7 +24,7 @@ public class StopTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="stop_time_id")
-    private Long stopTimeId;
+    private Integer stopTimeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trip_id", nullable = false)
@@ -37,7 +37,7 @@ public class StopTime {
     private Station station;
 
     @Column(name = "stop_sequence", nullable = false)
-    private Integer stopSequence;
+    private Short stopSequence;
 
     @Column(name="arrival_time", nullable = false)
     private LocalTime arrivalTime;
@@ -47,7 +47,7 @@ public class StopTime {
 
     protected StopTime(){}
 
-    public StopTime(TrainTrip trainTrip, Station station, Integer stopSequence, LocalTime arrivalTime, LocalTime departureTime){
+    public StopTime(TrainTrip trainTrip, Station station, Short stopSequence, LocalTime arrivalTime, LocalTime departureTime){
         this.trainTrip=trainTrip;
         this.station=station;
         this.stopSequence=stopSequence;
@@ -55,7 +55,7 @@ public class StopTime {
         this.departureTime=departureTime;
     }
 
-    public Long getStopTimeId() {
+    public Integer getStopTimeId() {
         return stopTimeId;
     }
 
@@ -75,11 +75,11 @@ public class StopTime {
         this.station = station;
     }
 
-    public Integer getStopSequence() {
+    public Short getStopSequence() {
         return stopSequence;
     }
 
-    public void setStopSequence(Integer stopSequence) {
+    public void setStopSequence(Short stopSequence) {
         this.stopSequence = stopSequence;
     }
 
