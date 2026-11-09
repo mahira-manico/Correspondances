@@ -6,7 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name="LineStation",
+@Table(name="line_station",
         uniqueConstraints = {
         @UniqueConstraint(
                 name = "uq_line_station",
@@ -27,7 +27,7 @@ public class LineStation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="line_station_id")
-    private Long lineStationId;
+    private Integer lineStationId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "line_id", nullable = false)
@@ -40,21 +40,21 @@ public class LineStation {
     private Station station;
 
     @Column(name="stop_order", nullable = false)
-    private Integer stopOrder;
+    private Short stopOrder;
 
     @Column(name="distance_from_origin", nullable = false, precision = 6, scale = 1)
     private BigDecimal distanceFromOrigin;
 
     protected LineStation(){}
 
-    public LineStation(Line line, Station station, Integer stopOrder, BigDecimal distanceFromOrigin){
+    public LineStation(Line line, Station station, Short stopOrder, BigDecimal distanceFromOrigin){
         this.line=line;
         this.station=station;
         this.stopOrder=stopOrder;
         this.distanceFromOrigin=distanceFromOrigin;
     }
 
-    public Long getLineStationId() {
+    public Integer getLineStationId() {
         return lineStationId;
     }
 
@@ -74,11 +74,11 @@ public class LineStation {
         this.station = station;
     }
 
-    public Integer getStopOrder() {
+    public Short getStopOrder() {
         return stopOrder;
     }
 
-    public void setStopOrder(Integer stopOrder) {
+    public void setStopOrder(Short stopOrder) {
         this.stopOrder = stopOrder;
     }
 
