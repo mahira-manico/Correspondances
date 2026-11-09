@@ -19,7 +19,7 @@ public class Carriage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="carriage_id")
-    private Long carriageId;
+    private Integer carriageId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "train_id", nullable = false)
@@ -27,16 +27,16 @@ public class Carriage {
     private Train train;
 
     @Column(name="carriage_number", nullable = false)
-    private Integer carriageNumber;
+    private Short carriageNumber;
 
     protected Carriage(){}
 
-    public Carriage(Train train, Integer carriageNumber){
+    public Carriage(Train train, Short carriageNumber){
         this.train=train;
         this.carriageNumber=carriageNumber;
     }
 
-    public Long getCarriageId() {
+    public Integer getCarriageId() {
         return carriageId;
     }
 
@@ -48,11 +48,11 @@ public class Carriage {
         this.train = train;
     }
 
-    public Integer getCarriageNumber() {
+    public Short getCarriageNumber() {
         return carriageNumber;
     }
 
-    public void setCarriageNumber(Integer carriageNumber) {
+    public void setCarriageNumber(Short carriageNumber) {
         this.carriageNumber = carriageNumber;
     }
 }
