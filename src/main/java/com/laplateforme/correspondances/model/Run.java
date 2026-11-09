@@ -17,7 +17,7 @@ public class Run {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="run_id")
-    private Long runId;
+    private Integer runId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "trip_id", nullable = false)
@@ -34,7 +34,7 @@ public class Run {
         this.runDate=runDate;
     }
 
-    public Long getRunId() {
+    public Integer getRunId() {
         return runId;
     }
 
